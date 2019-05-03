@@ -44,8 +44,9 @@ class App extends React.Component {
     });
   }
 
-  _sendMessage = () => {
-    axios({
+  _sendMessage = async () => {
+    console.log("sendMessage");
+    await axios({
       method: 'post',
       url: '/api',
       data: qs.stringify({
@@ -55,7 +56,9 @@ class App extends React.Component {
         'Content-Type': 'application/x-www-form-urlencoded'
       }
     });
-    console.log("sendMessage");
+    this.setState({
+      text: ''
+    });
   }
 
 }
